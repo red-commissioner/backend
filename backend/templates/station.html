@@ -22,7 +22,6 @@
 
           <!-- Page Heading -->
           
-
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800" data-station-id="{{ station.slug }}">{{ station.name }}</h1>
 
@@ -31,43 +30,39 @@
                 <a href="#" class="btn btn-light btn-circle command"
                   data-command="ghost"
                   data-status="0"
-                  data-status-color="secondary"
-                >
+                  data-status-color="secondary">
                   <i class="fas fa-ghost"></i>
                 </a>
                 <!-- Heater -->
                 <a href="#" class="btn btn-light btn-circle command"
                   data-command="h"
                   data-status="0"
-                  data-status-color="danger"
-                >
+                  data-status-color="danger">
                   <i class="fas fa-burn"></i>
                 </a>
                 <!-- Clean position -->
                 <a href="#" class="btn btn-light btn-circle command"
                   data-command="cp"
                   data-status="0"
-                  data-status-color="success"
-                >
+                  data-status-color="success">
                   <i class="fas fa-soap"></i>
                 </a>
                 <!-- Proudction -->
                 <a href="#" class="btn btn-light btn-circle command"
                   data-command="ka"
                   data-status="0"
-                  data-status-color="warning"
-                >
+                  data-status-color="warning">
                   <i class="fas fa-bolt"></i>
                 </a>
               </div>
             </div>
 
-            <a href="#" class="btn btn-info btn-icon-split">
+            <span class="btn btn-info btn-icon-split">
               <span class="icon text-white-50">
                 <i class="fal fa-lg fa-{{ current_status_icon }} text-gray-300"></i>
               </span>
               <span data-station-status="{{ current_status_icon }}" class="text">{{ station.get_status_display }}</span>
-            </a>
+            </span>
 
           </div>
 

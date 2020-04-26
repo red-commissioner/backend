@@ -4,10 +4,9 @@ from datetime import datetime, timedelta
 
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count
 
 from .models import Station, Sensor, Message, Installation
 
@@ -64,7 +63,7 @@ def station(request, installation_name, station_name):
     return render(request, 'station.html', context={
         'station': station,
         'current_status_icon': status_icon[station.status],
-        'station_has_messages': any([sensor.messages for sensor in station.sensors]),
+        'station_has_messages': any([sensor.messages() for sensor in station.sensors()]),
         **global_context()
     })
 

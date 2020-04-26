@@ -36,7 +36,11 @@
     <div id="collapseInstallations" class="collapse" aria-labelledby="headingInstallations" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         {% for installation in installations %}
+        {% if installation.stations %}
         <a class="collapse-item" href="/{{ installation.slug }}">{{ installation.name }}</a>
+        {% else %}
+        <span class="collapse-item">{{ installation.name }}</span>
+        {% endif %}
         {% endfor %}
       </div>
     </div>

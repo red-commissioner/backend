@@ -33,7 +33,11 @@
 
             {% for installation in installations %}
             <div class="station col-xl-3 col-md-6 mb-4">
+              {% if installation.stations %}
                 <div class="card border-left-info shadow h-100 py-2">
+              {% else %}
+              <div class="card shadow h-100 py-2">
+              {% endif %}
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
@@ -41,9 +45,15 @@
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ installation.name }}</div>
                       </div>
                       <div class="col-auto">
+                        {% if installation.stations %} 
                         <a href="{{ installation.slug }}">
                           <i class="fal fa-ball-pile fa-2x text-gray-500"></i>
                         </a>
+                        {% else %}
+                        <span>
+                          <i class="fal fa-ball-pile fa-2x text-gray-500"></i>
+                        </span>
+                        {% endif %}
                       </div>
                     </div>
                   </div>

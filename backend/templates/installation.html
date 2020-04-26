@@ -44,26 +44,34 @@
                         {{ station.name }}
                       </div>
                       <div class="h5 mb-0">
-                        <a href="#" class="btn btn-light btn-icon-split signal"
-                          data-command="ghost">
+                        <a href="#" class="btn btn-light btn-icon-split command"
+                          data-command="ghost"
+                          data-status="0"
+                          data-status-color="secondary">
                           <span class="icon text-white-50">
                             <i class="fas fa-ghost"></i>
                           </span>
                         </a>
-                        <a href="#" class="btn btn-light btn-icon-split signal"
-                        data-command="heat">
+                        <a href="#" class="btn btn-light btn-icon-split command"
+                        data-command="h"
+                        data-status="0"
+                        data-status-color="danger">
                         <span class="icon text-white-50">
                           <i class="fas fa-burn"></i>
                         </span>
                       </a>
-                        <a href="#" class="btn btn-light btn-icon-split signal"
-                          data-command="clean">
+                        <a href="#" class="btn btn-light btn-icon-split command"
+                          data-command="cp"
+                          data-status="0"
+                          data-status-color="success">
                           <span class="icon text-white-50">
                             <i class="fas fa-soap"></i>
                           </span>
                         </a>
-                        <a href="#" class="btn btn-light btn-icon-split signal"
-                          data-command="shutdown">
+                        <a href="#" class="btn btn-light btn-icon-split command"
+                          data-command="ka"
+                          data-status="0"
+                          data-status-color="warning">
                           <span class="icon text-white-50">
                             <i class="fas fa-bolt"></i>
                           </span>
@@ -114,8 +122,7 @@
   {% load static %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
   <script src="{% static "js/mqtt.js" %}" type="text/javascript" language="javascript"></script>
-
-  <script src="{% static "js/installation.js" %}" type="text/javascript" language="javascript"></script>
+  <script src="{% static "js/station.js" %}" type="text/javascript" language="javascript"></script>
 
 </body>
 
