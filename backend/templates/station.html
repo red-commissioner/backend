@@ -28,25 +28,41 @@
 
             <div class="row no-gutters align-items-center">
               <div class="col-auto">
-                <a href="#" class="btn btn-light btn-circle">
+                <a href="#" class="btn btn-light btn-circle command"
+                  data-command="ghost"
+                  data-status="0"
+                  data-status-color="secondary"
+                >
                   <i class="fas fa-ghost"></i>
                 </a>
                 <!-- Heater -->
-                <a href="#" class="btn btn-light btn-circle">
+                <a href="#" class="btn btn-light btn-circle command"
+                  data-command="h"
+                  data-status="0"
+                  data-status-color="danger"
+                >
                   <i class="fas fa-burn"></i>
                 </a>
                 <!-- Clean position -->
-                <a href="#" class="btn btn-light btn-circle">
+                <a href="#" class="btn btn-light btn-circle command"
+                  data-command="cp"
+                  data-status="0"
+                  data-status-color="success"
+                >
                   <i class="fas fa-soap"></i>
                 </a>
                 <!-- Proudction -->
-                <a href="#" class="btn btn-light btn-circle">
+                <a href="#" class="btn btn-light btn-circle command"
+                  data-command="ka"
+                  data-status="0"
+                  data-status-color="warning"
+                >
                   <i class="fas fa-bolt"></i>
                 </a>
               </div>
             </div>
 
-            <a href="#" class="btn btn-info btn-icon-split" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="btn btn-info btn-icon-split">
               <span class="icon text-white-50">
                 <i class="fal fa-lg fa-{{ current_status_icon }} text-gray-300"></i>
               </span>

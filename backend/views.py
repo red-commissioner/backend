@@ -47,7 +47,6 @@ def installation(request, installation_name):
 def station(request, installation_name, station_name):
 
     station = Station.objects.get(slug=station_name)
-    station_status = station.status
     status_icon = {
         'SH': 'house-return',
         'H': 'home',
@@ -64,7 +63,7 @@ def station(request, installation_name, station_name):
 
     return render(request, 'station.html', context={
         'station': station,
-        'current_status_icon': status_icon[station_status],
+        'current_status_icon': status_icon[station.status],
         'station_has_messages': any([sensor.messages for sensor in station.sensors]),
         **global_context()
     })
