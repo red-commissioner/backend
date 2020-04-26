@@ -14,6 +14,9 @@ class Installation(models.Model):
     
     def position(self):
         return self.latitude, self.longitude
+    
+    def stations(self):
+        return Station.objects.filter(installation=self)
 
     def __str__(self):
         return f'{self.name} ({self.ip_address}) - {self.location}'
@@ -36,7 +39,6 @@ class Station(models.Model):
     status = models.CharField(max_length=2, choices=STATUS, default='H')
     installation = models.ForeignKey(Installation, on_delete=models.CASCADE)
 
-    @property
     def sensors(self):
         return Sensor.objects.filter(station=self)
 
@@ -49,7 +51,6 @@ class Sensor(models.Model):
     slug = models.SlugField(max_length=30, blank=True)
     updated_at = models.DateTimeField(null=True)
 
-    @property
     def messages(self):
         return Message.objects.filter(sensor=self)
 
