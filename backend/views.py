@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*
 from datetime import datetime, timedelta
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.csrf import csrf_exempt
@@ -34,6 +34,9 @@ def dashboard(request):
 def installation(request, installation_name):
     installation = Installation.objects.get(slug=installation_name)
     stations = Station.objects.filter(installation=installation)
+    if len(stations) == 1:
+        station = stations.first()
+        return redirect('station', installation_name=installation.slug, station_name=station.slug)
 
     return render(request, 'installation.html', context={
         'stations': stations,
