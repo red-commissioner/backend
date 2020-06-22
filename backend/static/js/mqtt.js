@@ -3,12 +3,15 @@ var client;
 var reconnectTimeout = 2000;
 var host = location.hostname;
 var port = 9001;
-var subscribeTopic = '#';
+
+var tmTopic = '+/tm';
+var tpTopic = 'retiro_1/gw/ui/tp';
 
 function onConnect() {
   //Once a connection is made, make a subscription and send a message
   console.log("Connected");
-  client.subscribe(subscribeTopic);
+  client.subscribe(tmTopic);
+  client.subscribe(tpTopic);
 };
 
 function onFailure(error) {
@@ -19,6 +22,8 @@ function onFailure(error) {
 
 function onMessageArrived(message) {
   console.log(`[mqtt_message] Topic: ${message.destinationName}\nPayload: ${message.payloadString}`);
+  sensor = message.destinationName.split('/')[3];
+  station[sensor] = message.payloadString;
 }
 
 console.log(`connecting to ${host}:${port}`);

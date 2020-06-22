@@ -1,5 +1,41 @@
 
-var station = $('h1').data()['stationId'];
+var station = {
+  name: $('h1').data()['stationId'],
+}
+
+var max_tmp = 100;
+
+var primary_temp = $("#tp");
+var primary_temp_indicator = primary_temp.find(".h3");
+
+var deposit_temp = $("#tm");
+var deposit_temp_indicator = deposit_temp.find(".h5");
+var deposit_temp_bar = deposit_temp.find(".progress-bar");
+
+Object.defineProperties(station, {
+  tm: {
+    get: function() {
+      return station._tm;
+    },
+    set: function(new_value) {
+      station._tm = new_value;
+      deposit_temp_indicator.text(station._tm + "º C");
+
+      //add new bg class according to new temperature
+      deposit_temp_bar.toggleClass("bg-danger", parseInt(new_value) > max_tmp/3);
+      deposit_temp_bar.attr('aria-valuenow', new_value).css('width', new_value+'%');;
+    }
+  },
+  tp: {
+    get: function() {
+      return station._tp;
+    },
+    set: function(new_value) {
+      station._tp = new_value;
+      primary_temp_indicator.text(station._tp + "º C");
+    }
+  }
+})
 
 $(".command").on('click', function(){
   let payload = "0";
@@ -8,7 +44,7 @@ $(".command").on('click', function(){
     payload = "1";
   }
 
-  let topic = station + '/gw/ui/tc/' + this.dataset['command'];
+  let topic = station.name + '/gw/ui/tc/' + this.dataset['command'];
   console.log(`About to send ${topic} with payload: ${payload}`);
 
   try {
